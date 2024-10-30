@@ -1,53 +1,102 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jugadores de los Lakers 2024/25</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <div class="selected-player">
-            <img id="playerImage" src="https://sportjudge.mx/img/2023/10/21/plantilla_de_los_lakers_23-24.jpg?__scale=w:1280,h:720,t:2,fpx:648,fpy:161" alt="Jugador seleccionado">
-            <div id="playerInfo" class="info"></div>
-        </div>
-        <div class="players">
-            <div class="player" onclick="selectPlayer('lebron.jpg', 'LeBron James', 39, 'USA', 'Alero', 'Promedia 20.0 PPG, 7.0 RPG, 7.5 APG')">
-                <img src="https://cuestionentrerriana.com.ar/wp-content/uploads/2020/05/LEBRON-JAMES-ADAM-SANDLER.jpg" alt="LeBron James">
-                <p>LeBron James</p>
-            </div>
-            <div class="player" onclick="selectPlayer('anthony.jpg', 'Anthony Davis', 31, 'USA', 'Pívot', 'Promedia 32.8 PPG, 12.0 RPG, 3.3 APG')">
-                <img src="https://miro.medium.com/v2/resize:fit:4000/format:webp/1*1BliQyDlLFIl5z910BHs0w.jpeg" alt="Anthony Davis">
-                <p>Anthony Davis</p>
-            </div>
-            <div class="player" onclick="selectPlayer('dangelo.jpg', 'D’Angelo Russell', 28, 'USA', 'Base', 'Promedia 11.0 PPG, 2.0 RPG, 5.8 APG')">
-                <img src="https://www.ocregister.com/wp-content/uploads/2024/04/AP24108088172276-1.jpg?w=524" alt="D’Angelo Russell">
-                <p>D’Angelo Russell</p>
-            </div>
-            <div class="player" onclick="selectPlayer('reeves.jpg', 'Austin Reaves', 26, 'USA', 'Escolta', 'Promedia 19.3 PPG, 7.0 RPG, 5.3 APG')">
-                <img src="https://www.kxan.com/wp-content/uploads/sites/40/2023/03/download-3692.jpg?w=876&h=493&crop=1" alt="Austin Reaves">
-                <p>Austin Reaves</p>
-            </div>
-            <div class="player" onclick="selectPlayer('hachimura.jpg', 'Rui Hachimura', 26, 'JPN', 'Ala-pivot', 'Promedia 17.5 PPG, 7.8 RPG, 2.0 APG')">
-                <img src="https://s22928.pcdn.co/wp-content/uploads/2023/02/Rui-Hachimura-7.jpg" alt="Rui Hachimura">
-                <p>Rui Hachimura</p>
-            </div>
-            <!-- Agrega más jugadores según sea necesario -->
-        </div>
-    </div>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.createElement('div');
+    container.className = 'container';
 
-    <script>
-        function selectPlayer(image, name, age, nationality, position, stats) {
-            document.getElementById('playerImage').src = 'imagenes/' + image;
-            document.getElementById('playerInfo').innerHTML = `
-                <h2>${name}</h2>
-                <p><strong>Edad:</strong> ${age}</p>
-                <p><strong>Nacionalidad:</strong> ${nationality}</p>
-                <p><strong>Posición:</strong> ${position}</p>
-                <p><strong>Estadísticas:</strong> ${stats}</p>
-            `;
+    const selectedPlayer = document.createElement('div');
+    selectedPlayer.className = 'selected-player';
+
+    const playerImage = document.createElement('img');
+    playerImage.id = 'playerImage';
+    playerImage.src = 'https://sportjudge.mx/img/2023/10/21/plantilla_de_los_lakers_23-24.jpg?__scale=w:1280,h:720,t:2,fpx:648,fpy:161';
+    playerImage.alt = 'Jugador seleccionado';
+
+    const playerInfo = document.createElement('div');
+    playerInfo.id = 'playerInfo';
+    playerInfo.className = 'info';
+
+    selectedPlayer.appendChild(playerImage);
+    selectedPlayer.appendChild(playerInfo);
+    container.appendChild(selectedPlayer);
+
+    const playersDiv = document.createElement('div');
+    playersDiv.className = 'players';
+
+    const playersData = [
+        {
+            image: 'lebron.jpg',
+            name: 'LeBron James',
+            age: 39,
+            nationality: 'USA',
+            position: 'Alero',
+            stats: 'Promedia 20.0 PPG, 7.0 RPG, 7.5 APG',
+            imgSrc: 'https://cuestionentrerriana.com.ar/wp-content/uploads/2020/05/LEBRON-JAMES-ADAM-SANDLER.jpg'
+        },
+        {
+            image: 'anthony.jpg',
+            name: 'Anthony Davis',
+            age: 31,
+            nationality: 'USA',
+            position: 'Pívot',
+            stats: 'Promedia 32.8 PPG, 12.0 RPG, 3.3 APG',
+            imgSrc: 'https://miro.medium.com/v2/resize:fit:4000/format:webp/1*1BliQyDlLFIl5z910BHs0w.jpeg'
+        },
+        {
+            image: 'dangelo.jpg',
+            name: 'D’Angelo Russell',
+            age: 28,
+            nationality: 'USA',
+            position: 'Base',
+            stats: 'Promedia 11.0 PPG, 2.0 RPG, 5.8 APG',
+            imgSrc: 'https://www.ocregister.com/wp-content/uploads/2024/04/AP24108088172276-1.jpg?w=524'
+        },
+        {
+            image: 'reeves.jpg',
+            name: 'Austin Reaves',
+            age: 26,
+            nationality: 'USA',
+            position: 'Escolta',
+            stats: 'Promedia 19.3 PPG, 7.0 RPG, 5.3 APG',
+            imgSrc: 'https://www.kxan.com/wp-content/uploads/sites/40/2023/03/download-3692.jpg?w=876&h=493&crop=1'
+        },
+        {
+            image: 'hachimura.jpg',
+            name: 'Rui Hachimura',
+            age: 26,
+            nationality: 'JPN',
+            position: 'Ala-pivot',
+            stats: 'Promedia 17.5 PPG, 7.8 RPG, 2.0 APG',
+            imgSrc: 'https://s22928.pcdn.co/wp-content/uploads/2023/02/Rui-Hachimura-7.jpg'
         }
-    </script>
-</body>
-</html>
+    ];
+
+    playersData.forEach(player => {
+        const playerDiv = document.createElement('div');
+        playerDiv.className = 'player';
+        playerDiv.onclick = () => selectPlayer(player.image, player.name, player.age, player.nationality, player.position, player.stats);
+
+        const playerImg = document.createElement('img');
+        playerImg.src = player.imgSrc;
+        playerImg.alt = player.name;
+
+        const playerName = document.createElement('p');
+        playerName.textContent = player.name;
+
+        playerDiv.appendChild(playerImg);
+        playerDiv.appendChild(playerName);
+        playersDiv.appendChild(playerDiv);
+    });
+
+    container.appendChild(playersDiv);
+    document.body.appendChild(container);
+
+    function selectPlayer(image, name, age, nationality, position, stats) {
+        document.getElementById('playerImage').src = 'imagenes/' + image;
+        document.getElementById('playerInfo').innerHTML = `
+            <h2>${name}</h2>
+            <p><strong>Edad:</strong> ${age}</p>
+            <p><strong>Nacionalidad:</strong> ${nationality}</p>
+            <p><strong>Posición:</strong> ${position}</p>
+            <p><strong>Estadísticas:</strong> ${stats}</p>
+        `;
+    }
+});
