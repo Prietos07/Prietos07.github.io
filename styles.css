@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.pinimg.com/originals/57/00/d5/5700d52433bfa03bddc6032aa23c68d6.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.selected-player {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.selected-player img {
+    max-width: 300px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.info {
+    text-align: center;
+}
+
+.players {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.player {
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.player img {
+    max-width: 100px;
+    border-radius: 10px;
+}
